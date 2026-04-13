@@ -143,7 +143,7 @@ const Hero = () => {
         >
           <div className="relative z-10 w-full aspect-square max-w-md mx-auto overflow-hidden organic-shape shadow-2xl shadow-emerald-900/10 border-8 border-white">
             <img 
-              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" 
+              src="/dr-parna.jpg" 
               alt="Dr. Farzana Haque Parna"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -437,7 +437,7 @@ export default function App() {
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-teal-50 rounded-full -z-10 blur-2xl" />
               <div className="rounded-[3rem] overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800" 
+                  src="/dr-parna.jpg" 
                   alt="Dr. Farzana Haque Parna"
                   className="w-full h-auto"
                   referrerPolicy="no-referrer"
