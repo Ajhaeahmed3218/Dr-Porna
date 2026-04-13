@@ -29,8 +29,8 @@ const Navbar = () => {
     )}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-emerald-900 rounded-full flex items-center justify-center text-white font-serif text-xl font-bold">
-            P
+          <div className="w-10 h-10 bg-gradient-to-br from-emerald-800 to-teal-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-900/20 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <Stethoscope size={22} strokeWidth={2.5} />
           </div>
           <div className="flex flex-col">
             <span className="font-serif text-lg font-bold leading-none text-emerald-900">Dr. Farzana Haque Parna</span>
@@ -362,8 +362,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-emerald-900 font-serif text-2xl font-bold">
-                P
+              <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white border border-white/20 shadow-xl transform -rotate-3">
+                <Stethoscope size={28} strokeWidth={2} />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-xl font-bold leading-none">Dr. Farzana Haque Parna</span>
