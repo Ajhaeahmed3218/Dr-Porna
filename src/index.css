@@ -7,6 +7,9 @@
   
   --color-emerald-900: #064e3b;
   --color-teal-600: #0d9488;
+  --color-teal-500: #14b8a6;
+  --color-mint-50: #f0fdfa;
+  --color-mint-100: #ccfbf1;
   --color-rose-50: #fff1f2;
   --color-slate-50: #f8fafc;
 }
@@ -17,7 +20,7 @@
   }
   
   body {
-    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+    @apply bg-slate-50 text-slate-900 font-sans antialiased overflow-x-hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -26,9 +29,18 @@
 }
 
 .glass {
-  @apply bg-white/70 backdrop-blur-md border border-white/20;
+  @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-lg shadow-teal-900/5;
 }
 
 .organic-shape {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.bg-mesh {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(20, 184, 166, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(13, 148, 136, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(20, 184, 166, 0.05) 0px, transparent 50%);
 }

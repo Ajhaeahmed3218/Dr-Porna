@@ -102,65 +102,111 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-32 pb-20 px-6 overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-rose-50/50 -z-10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/4" />
+    <section id="home" className="relative pt-40 pb-32 px-6 overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.2, 1],
+          rotate: [0, 90, 0],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal-100/30 -z-10 blur-[120px] rounded-full translate-x-1/3 -translate-y-1/3" 
+      />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-rose-50/40 -z-10 blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2" />
       
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-6">
-            <Award size={14} />
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-teal-50 text-teal-700 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-teal-100"
+          >
+            <Award size={16} className="animate-pulse" />
             BCS (Health) | FCPS (Gynae & Obs)
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-emerald-900 leading-[1.1] mb-6">
-            Compassionate Care for <br />
-            <span className="text-teal-600 italic">Every Woman.</span>
+          </motion.div>
+          <h1 className="text-6xl md:text-8xl font-bold text-emerald-900 leading-[0.95] mb-8 tracking-tighter">
+            Modern Care for <br />
+            <span className="text-teal-500 italic relative">
+              Every Woman.
+              <motion.span 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="absolute bottom-2 left-0 h-3 bg-teal-100 -z-10" 
+              />
+            </span>
           </h1>
-          <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
-            Dr. Farzana Haque Parna is a dedicated Consultant Gynaecologist & Obstetrician providing expert care in maternal health, infertility, and advanced gynae surgery.
+          <p className="text-xl text-slate-500 mb-10 max-w-lg leading-relaxed font-medium">
+            Dr. Farzana Haque Parna provides expert gynaecological care with a focus on empathy, precision, and modern medical excellence.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#chamber" className="bg-emerald-900 text-white px-8 py-4 rounded-full font-bold hover:bg-emerald-800 transition-all shadow-xl shadow-emerald-900/20 flex items-center gap-2">
+          <div className="flex flex-wrap gap-6">
+            <motion.a 
+              href="#chamber" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-emerald-900 text-white px-10 py-5 rounded-[2rem] font-bold hover:bg-emerald-800 transition-all shadow-2xl shadow-emerald-900/30 flex items-center gap-3 text-lg"
+            >
               Book Appointment
-              <ChevronRight size={20} />
-            </a>
-            <a href="#services" className="bg-white text-emerald-900 border border-emerald-100 px-8 py-4 rounded-full font-bold hover:bg-emerald-50 transition-all">
+              <ChevronRight size={24} />
+            </motion.a>
+            <motion.a 
+              href="#services" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-emerald-900 border-2 border-emerald-50 px-10 py-5 rounded-[2rem] font-bold hover:bg-teal-50 transition-all text-lg shadow-xl shadow-teal-900/5"
+            >
               View Services
-            </a>
+            </motion.a>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, ease: "backOut" }}
           className="relative"
         >
-          <div className="relative z-10 w-full aspect-square max-w-md mx-auto overflow-hidden organic-shape shadow-2xl shadow-emerald-900/10 border-8 border-white">
+          <div className="relative z-10 w-full aspect-[4/5] max-w-md mx-auto overflow-hidden rounded-[4rem] shadow-2xl shadow-teal-900/20 border-[12px] border-white group">
             <img 
               src="/dr-parna.jpg" 
               alt="Dr. Farzana Haque Parna"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
               referrerPolicy="no-referrer"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-teal-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
-          {/* Floating Elements */}
+          
+          {/* Floating Badges */}
           <motion.div 
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-4 -right-4 bg-white p-4 rounded-2xl shadow-xl z-20 flex items-center gap-3"
+            animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-8 -right-8 bg-white p-6 rounded-[2rem] shadow-2xl z-20 flex items-center gap-4 border border-teal-50"
           >
-            <div className="w-10 h-10 bg-rose-50 rounded-full flex items-center justify-center text-rose-500">
-              <Heart size={20} fill="currentColor" />
+            <div className="w-12 h-12 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 shadow-inner">
+              <Heart size={24} fill="currentColor" />
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-400 uppercase">Specialty</p>
-              <p className="text-sm font-bold text-emerald-900">Infertility Care</p>
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Specialist</p>
+              <p className="text-lg font-bold text-emerald-900">Infertility Care</p>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, 15, 0], rotate: [0, -2, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute -bottom-8 -left-8 bg-white p-6 rounded-[2rem] shadow-2xl z-20 flex items-center gap-4 border border-teal-50"
+          >
+            <div className="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-600 shadow-inner">
+              <Stethoscope size={24} />
+            </div>
+            <div>
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Expertise</p>
+              <p className="text-lg font-bold text-emerald-900">Gynae Surgery</p>
             </div>
           </motion.div>
         </motion.div>
@@ -178,22 +224,23 @@ const Stats = () => {
   ];
 
   return (
-    <section className="px-6 py-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <section className="px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+            transition={{ delay: i * 0.1, duration: 0.5 }}
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white shadow-xl shadow-teal-900/5 group transition-all"
           >
-            <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center mb-4", stat.color)}>
-              <stat.icon size={24} />
+            <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform", stat.color)}>
+              <stat.icon size={28} />
             </div>
-            <p className="text-3xl font-bold text-emerald-900 mb-1">{stat.value}</p>
-            <p className="text-sm text-slate-500 font-medium">{stat.label}</p>
+            <p className="text-4xl font-bold text-emerald-900 mb-2 tracking-tighter">{stat.value}</p>
+            <p className="text-sm text-slate-500 font-bold uppercase tracking-widest">{stat.label}</p>
           </motion.div>
         ))}
       </div>
@@ -230,30 +277,47 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="px-6 py-24 bg-white">
+    <section id="services" className="px-6 py-32 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4">Expertise & Services</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto">Providing world-class medical care with a focus on women's health and wellness at every stage of life.</p>
+        <div className="text-center mb-24">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-teal-600 font-black uppercase tracking-[0.3em] text-xs mb-4 block"
+          >
+            Our Expertise
+          </motion.span>
+          <h2 className="text-5xl md:text-7xl font-bold text-emerald-900 mb-6">Medical Excellence</h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg">Providing world-class care with a focus on women's health and wellness at every stage of life.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              whileHover={{ y: -10 }}
-              className="group p-8 rounded-3xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -15 }}
+              className="group p-10 rounded-[3rem] border border-teal-50 bg-white hover:shadow-2xl hover:shadow-teal-900/10 transition-all duration-500 relative overflow-hidden"
             >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-teal-50/50 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-700" />
+              
               <div className={cn(
-                "w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110",
-                service.color === 'rose' ? "bg-rose-100 text-rose-600" : 
-                service.color === 'emerald' ? "bg-emerald-100 text-emerald-600" :
-                service.color === 'teal' ? "bg-teal-100 text-teal-600" : "bg-slate-200 text-slate-600"
+                "w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all group-hover:scale-110 group-hover:rotate-6 shadow-lg",
+                service.color === 'rose' ? "bg-rose-100 text-rose-600 shadow-rose-200/50" : 
+                service.color === 'emerald' ? "bg-emerald-100 text-emerald-600 shadow-emerald-200/50" :
+                service.color === 'teal' ? "bg-teal-100 text-teal-600 shadow-teal-200/50" : "bg-slate-200 text-slate-600 shadow-slate-300/50"
               )}>
-                <service.icon size={28} />
+                <service.icon size={32} />
               </div>
-              <h3 className="text-xl font-bold text-emerald-900 mb-3">{service.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{service.desc}</p>
+              <h3 className="text-2xl font-bold text-emerald-900 mb-4">{service.title}</h3>
+              <p className="text-slate-500 text-base leading-relaxed mb-8">{service.desc}</p>
+              
+              <div className="flex items-center gap-2 text-teal-600 font-bold text-sm group-hover:gap-4 transition-all">
+                Learn More <ChevronRight size={16} />
+              </div>
             </motion.div>
           ))}
         </div>
@@ -285,22 +349,22 @@ const Schedule = () => {
   ];
 
   return (
-    <section id="chamber" className="px-6 py-24 bg-slate-50">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-emerald-900 mb-4">Practice Hours</h2>
-          <p className="text-slate-500">Find Dr. Farzana at her chambers for consultation and care.</p>
+    <section id="chamber" className="px-6 py-32 relative">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-emerald-900 mb-4">Practice Hours</h2>
+          <p className="text-slate-500 text-lg">Find Dr. Farzana at her chambers for consultation and care.</p>
         </div>
 
-        <div className="bg-white rounded-[2rem] shadow-xl shadow-emerald-900/5 overflow-hidden border border-emerald-50">
-          <div className="flex border-b border-slate-100">
+        <div className="bg-white rounded-[4rem] shadow-2xl shadow-teal-900/10 overflow-hidden border border-teal-50">
+          <div className="flex p-4 gap-4 bg-slate-50/50">
             {chambers.map((chamber, i) => (
               <button
                 key={chamber.name}
                 onClick={() => setActiveTab(i)}
                 className={cn(
-                  "flex-1 py-6 text-sm font-bold transition-all",
-                  activeTab === i ? "bg-emerald-900 text-white" : "text-slate-400 hover:text-emerald-900 hover:bg-emerald-50"
+                  "flex-1 py-6 rounded-[2.5rem] text-sm font-black uppercase tracking-widest transition-all",
+                  activeTab === i ? "bg-emerald-900 text-white shadow-xl shadow-emerald-900/30" : "text-slate-400 hover:text-emerald-900 hover:bg-white"
                 )}
               >
                 {chamber.name}
@@ -308,46 +372,59 @@ const Schedule = () => {
             ))}
           </div>
           
-          <div className="p-10">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="grid md:grid-cols-2 gap-8"
-            >
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-                    <MapPin size={20} />
+          <div className="p-16">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="grid md:grid-cols-2 gap-16"
+              >
+                <div className="space-y-10">
+                  <div className="flex items-start gap-6 group">
+                    <div className="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-600 shrink-0 group-hover:scale-110 transition-transform shadow-sm">
+                      <MapPin size={28} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-2">Location</p>
+                      <p className="text-2xl font-bold text-emerald-900 leading-tight">{chambers[activeTab].address}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs font-bold text-slate-400 uppercase mb-1">Location</p>
-                    <p className="text-lg font-bold text-emerald-900">{chambers[activeTab].address}</p>
+                  <div className="flex items-start gap-6 group">
+                    <div className="w-14 h-14 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 shrink-0 group-hover:scale-110 transition-transform shadow-sm">
+                      <Clock size={28} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-2">Visiting Hours</p>
+                      <p className="text-2xl font-bold text-emerald-900">{chambers[activeTab].hours}</p>
+                      <p className="text-base text-slate-500 font-medium mt-1">{chambers[activeTab].days}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-600 shrink-0">
-                    <Clock size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-slate-400 uppercase mb-1">Visiting Hours</p>
-                    <p className="text-lg font-bold text-emerald-900">{chambers[activeTab].hours}</p>
-                    <p className="text-sm text-slate-500">{chambers[activeTab].days}</p>
-                  </div>
+                <div className="bg-teal-50/50 rounded-[3rem] p-10 flex flex-col justify-center items-center text-center border border-teal-100 relative overflow-hidden group">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-teal-500/5 to-transparent pointer-events-none" />
+                  <motion.div 
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    className="mb-6"
+                  >
+                    <Calendar className="text-teal-600" size={56} />
+                  </motion.div>
+                  <h4 className="text-2xl font-bold text-emerald-900 mb-3">Book a Slot</h4>
+                  <p className="text-slate-500 mb-8 font-medium">Call directly to confirm your appointment time.</p>
+                  <motion.a 
+                    href={`tel:${chambers[activeTab].contact}`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-emerald-900 text-white py-5 rounded-[2rem] font-bold hover:bg-emerald-800 transition-all shadow-xl shadow-emerald-900/20 text-lg"
+                  >
+                    {chambers[activeTab].contact}
+                  </motion.a>
                 </div>
-              </div>
-              <div className="bg-slate-50 rounded-2xl p-6 flex flex-col justify-center items-center text-center border border-slate-100">
-                <Calendar className="text-emerald-900 mb-4" size={40} />
-                <h4 className="text-xl font-bold text-emerald-900 mb-2">Book a Slot</h4>
-                <p className="text-sm text-slate-500 mb-6">Call directly to confirm your appointment time.</p>
-                <a 
-                  href={`tel:${chambers[activeTab].contact}`}
-                  className="w-full bg-emerald-900 text-white py-3 rounded-xl font-bold hover:bg-emerald-800 transition-all"
-                >
-                  {chambers[activeTab].contact}
-                </a>
-              </div>
-            </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
@@ -422,125 +499,167 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen selection:bg-emerald-100 selection:text-emerald-900">
+    <div className="min-h-screen selection:bg-teal-100 selection:text-teal-900 bg-mesh">
       <Navbar />
       <main>
         <Hero />
-        <Stats />
-        <Services />
-        <Schedule />
         
-        {/* About Section */}
-        <section id="about" className="px-6 py-24 bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-teal-50 rounded-full -z-10 blur-2xl" />
-              <div className="rounded-[3rem] overflow-hidden shadow-2xl">
+        {/* Floating Stats Section */}
+        <div className="relative -mt-16 z-20">
+          <Stats />
+        </div>
+
+        <Services />
+        
+        {/* About Section with Parallax-like reveal */}
+        <section id="about" className="px-6 py-32 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-mint-100/50 rounded-full blur-3xl -z-10 translate-x-1/2" />
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="absolute -top-6 -left-6 w-full h-full border-2 border-teal-200 rounded-[3rem] -z-10" />
+              <div className="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
                 <img 
                   src="/dr-parna.jpg" 
                   alt="Dr. Farzana Haque Parna"
-                  className="w-full h-auto"
+                  className="w-full h-auto hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-emerald-900 text-white p-8 rounded-3xl shadow-2xl max-w-[200px]">
-                <p className="text-4xl font-bold mb-1">10+</p>
-                <p className="text-xs font-medium uppercase tracking-widest opacity-70">Years of Clinical Excellence</p>
-              </div>
-            </div>
+              <motion.div 
+                initial={{ x: 50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="absolute -bottom-10 -right-10 bg-white p-10 rounded-[2.5rem] shadow-2xl border border-teal-50"
+              >
+                <p className="text-5xl font-bold text-teal-600 mb-1">10+</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">Years Excellence</p>
+              </motion.div>
+            </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-8">About Dr. Farzana</h2>
-              <div className="space-y-6 text-slate-600 leading-relaxed">
+              <span className="text-teal-600 font-bold uppercase tracking-widest text-sm mb-4 block">The Specialist</span>
+              <h2 className="text-5xl md:text-6xl font-bold text-emerald-900 mb-8 leading-tight">Dedicated to <br /><span className="text-teal-500 italic">Your Wellbeing.</span></h2>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-lg">
                 <p>
                   Dr. Farzana Haque Parna is a highly skilled Consultant Gynaecologist and Obstetrician with over a decade of experience in providing comprehensive women's healthcare. 
                 </p>
                 <p>
-                  A member of the prestigious BCS (Health) cadre and a Fellow of the College of Physicians and Surgeons (FCPS) in Gynaecology and Obstetrics, she combines academic excellence with a deep sense of compassion for her patients.
-                </p>
-                <p>
-                  Her expertise spans across normal and high-risk pregnancy management, infertility diagnostics, and advanced laparoscopic surgeries. She is currently serving at the 250 Bedded General Hospital, Moulvibazar, and maintains a private practice at Health Aid Diagnostic.
+                  A member of the prestigious BCS (Health) cadre and a Fellow of the College of Physicians and Surgeons (FCPS) in Gynaecology and Obstetrics, she combines academic excellence with a deep sense of compassion.
                 </p>
               </div>
-              <div className="mt-10 grid grid-cols-2 gap-6">
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <p className="font-bold text-emerald-900">MBBS, BCS</p>
-                  <p className="text-xs text-slate-500">Medical Degree & Civil Service</p>
-                </div>
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                  <p className="font-bold text-emerald-900">FCPS (Gynae & Obs)</p>
-                  <p className="text-xs text-slate-500">Specialization Fellowship</p>
-                </div>
+              <div className="mt-12 grid grid-cols-2 gap-8">
+                <motion.div 
+                  whileHover={{ y: -5 }}
+                  className="p-6 rounded-3xl bg-white shadow-xl shadow-teal-900/5 border border-teal-50"
+                >
+                  <Award className="text-teal-500 mb-3" size={32} />
+                  <p className="font-bold text-emerald-900 text-xl">MBBS, BCS</p>
+                  <p className="text-sm text-slate-500">Medical Excellence</p>
+                </motion.div>
+                <motion.div 
+                  whileHover={{ y: -5 }}
+                  className="p-6 rounded-3xl bg-white shadow-xl shadow-teal-900/5 border border-teal-50"
+                >
+                  <Stethoscope className="text-teal-500 mb-3" size={32} />
+                  <p className="font-bold text-emerald-900 text-xl">FCPS (Gynae)</p>
+                  <p className="text-sm text-slate-500">Specialized Care</p>
+                </motion.div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Testimonials Placeholder */}
-        <section className="px-6 py-24 bg-rose-50/30">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-emerald-900 mb-4">Patient Testimonials</h2>
-              <p className="text-slate-500">Hear from the women who have trusted Dr. Farzana with their health.</p>
+        <Schedule />
+        
+        {/* Testimonials with Animated Cards */}
+        <section className="px-6 py-32 bg-teal-900 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div className="absolute top-10 left-10 w-64 h-64 border-4 border-white rounded-full" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 border-4 border-white rounded-full" />
+          </div>
+          
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 italic">Voices of Trust</h2>
+              <p className="text-teal-100/60 max-w-xl mx-auto text-lg">Real stories from women who found care and comfort with Dr. Farzana.</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-10">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border border-rose-100/50">
-                  <div className="flex gap-1 text-teal-500 mb-4">
-                    {[1, 2, 3, 4, 5].map((s) => <Heart key={s} size={16} fill="currentColor" />)}
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -15, rotate: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2 }}
+                  className="bg-white/10 backdrop-blur-xl p-10 rounded-[3rem] border border-white/10"
+                >
+                  <div className="flex gap-1 text-teal-400 mb-8">
+                    {[1, 2, 3, 4, 5].map((s) => <Heart key={s} size={20} fill="currentColor" />)}
                   </div>
-                  <p className="text-slate-600 italic mb-6">"Dr. Farzana is incredibly patient and knowledgeable. She guided me through my entire pregnancy with so much care. I couldn't have asked for a better doctor."</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-slate-100 rounded-full" />
+                  <p className="text-teal-50 text-xl italic leading-relaxed mb-10">"Dr. Farzana is incredibly patient and knowledgeable. She guided me through my entire pregnancy with so much care."</p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-teal-500/20 rounded-full border border-teal-500/30" />
                     <div>
-                      <p className="font-bold text-emerald-900 text-sm">Happy Patient {i}</p>
-                      <p className="text-xs text-slate-400 font-medium uppercase">Moulvibazar</p>
+                      <p className="font-bold text-white">Happy Patient {i}</p>
+                      <p className="text-xs text-teal-400 font-bold uppercase tracking-widest">Moulvibazar</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Contact / Map Section */}
-        <section className="px-6 py-24 bg-white">
+        {/* Contact Section with Bento Layout */}
+        <section className="px-6 py-32">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-emerald-900 rounded-[3rem] p-12 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                <h2 className="text-4xl font-bold mb-8 relative z-10">Get in Touch</h2>
-                <div className="space-y-8 relative z-10">
-                  <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
-                      <Phone size={24} />
+            <div className="grid lg:grid-cols-3 gap-8">
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="lg:col-span-2 bg-emerald-900 rounded-[4rem] p-16 text-white relative overflow-hidden shadow-2xl"
+              >
+                <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <h2 className="text-5xl md:text-7xl font-bold mb-12 relative z-10 leading-tight">Let's Prioritize <br /><span className="text-teal-400">Your Health.</span></h2>
+                <div className="grid md:grid-cols-2 gap-12 relative z-10">
+                  <motion.div whileHover={{ x: 10 }} className="flex items-center gap-6 group">
+                    <div className="w-16 h-16 rounded-3xl bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-teal-500 transition-colors">
+                      <Phone size={28} />
                     </div>
                     <div>
-                      <p className="text-emerald-300 text-xs font-bold uppercase tracking-widest mb-1">Call for Appointment</p>
+                      <p className="text-teal-300 text-xs font-bold uppercase tracking-[0.2em] mb-1">Direct Line</p>
                       <p className="text-2xl font-bold">+880 1700 000000</p>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
-                      <MapPin size={24} />
+                  </motion.div>
+                  <motion.div whileHover={{ x: 10 }} className="flex items-center gap-6 group">
+                    <div className="w-16 h-16 rounded-3xl bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-teal-500 transition-colors">
+                      <MapPin size={28} />
                     </div>
                     <div>
-                      <p className="text-emerald-300 text-xs font-bold uppercase tracking-widest mb-1">Main Chamber</p>
-                      <p className="text-xl font-bold">Health Aid Diagnostic, Moulvibazar</p>
+                      <p className="text-teal-300 text-xs font-bold uppercase tracking-[0.2em] mb-1">Location</p>
+                      <p className="text-xl font-bold">Health Aid, Moulvibazar</p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
-                <div className="mt-12 pt-12 border-t border-white/10 relative z-10">
-                  <p className="text-emerald-200 text-sm italic">"Your health is my priority. Feel free to reach out for any gynaecological concerns or pregnancy care."</p>
-                </div>
-              </div>
+              </motion.div>
               
-              <div className="rounded-[3rem] overflow-hidden border border-slate-100 shadow-2xl h-[500px]">
-                {/* Google Maps Embed Placeholder */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl h-full min-h-[400px]"
+              >
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3634.567890123456!2d91.76543210987654!3d24.48765432109876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDI5JzE1LjYiTiA5McKwNDUnNTUuNiJF!5e0!3m2!1sen!2sbd!4v1234567890123" 
                   width="100%" 
@@ -550,7 +669,7 @@ export default function App() {
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
