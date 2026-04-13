@@ -504,8 +504,8 @@ export default function App() {
       <main>
         <Hero />
         
-        {/* Floating Stats Section */}
-        <div className="relative -mt-16 z-20">
+        {/* Stats Section */}
+        <div className="relative mt-24 z-20">
           <Stats />
         </div>
 
